@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">KidsEducation</string>
+    <string name="your_web_client_id">776601680387-am4pl0lkdik3g3upc4jvjk9q2oss4qhv.apps.googleusercontent.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

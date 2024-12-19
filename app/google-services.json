@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "776601680387",
+    "project_id": "kideducation-7a385",
+    "storage_bucket": "kideducation-7a385.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776601680387:android:ab391f945d766206606c36",
+        "android_client_info": {
+          "package_name": "com.example.kidseducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776601680387-7k77vng8075ieig1mra7ce98bl5if3nf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kidseducation",
+            "certificate_hash": "f7c4839a13c1250f2438f51546a174f80c252ab2"
+          }
+        },
+        {
+          "client_id": "776601680387-am4pl0lkdik3g3upc4jvjk9q2oss4qhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT51dH-XorriJ3UROL5ElsfNB_9bt31ZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776601680387-am4pl0lkdik3g3upc4jvjk9q2oss4qhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

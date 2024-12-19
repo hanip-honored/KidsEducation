@@ -30,17 +30,17 @@ class HomeActivity : AppCompatActivity() {
 
         val textName = findViewById<TextView>(R.id.name)
 
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-
-        if (firebaseUser.displayName != null){
-            textName?.setText(firebaseUser.displayName)
-        } else {
-            textName.setText("Login Gagal")
-        }
-
-        findViewById<Button>(R.id.logout).setOnClickListener {
-            Firebase.auth.signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
+//        firebaseUser = FirebaseAuth.getInstance().currentUser!!
+//
+//        if (firebaseUser.displayName != null){
+//            textName?.setText(firebaseUser.displayName)
+//        } else {
+//            textName.setText("Login Gagal")
+//        }
+//
+//        findViewById<Button>(R.id.logout).setOnClickListener {
+//            Firebase.auth.signOut()
+//            startActivity(Intent(this, LoginActivity::class.java))
+//        }
     }
 }

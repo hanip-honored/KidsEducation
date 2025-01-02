@@ -80,6 +80,9 @@ dependencies {
 //    implementation ("org.tensorflow:tensorflow-lite-task-vision:2.16.1")
 //    implementation ("org.tensorflow:tensorflow-lite-gpu:2.16.1")
 
+    //Picasso
+    implementation("com.squareup.picasso:picasso:2.8")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

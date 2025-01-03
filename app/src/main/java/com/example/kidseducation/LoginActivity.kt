@@ -3,12 +3,6 @@ package com.example.kidseducation
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -17,13 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kidseducation.client.RetrofitClient
 import com.example.kidseducation.response.account.LoginResponse
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.example.kidseducation.response.quizcategory.QuizProgressResponse
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,6 +64,26 @@ class LoginActivity : AppCompatActivity() {
                             ).show()
                             val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intentLogin)
+
+                            val idUser = account.data.id_user
+
+                            RetrofitClient.instance.getQuizProgress(idUser).enqueue(
+                                object : Callback<ArrayList<QuizProgressResponse>> {
+                                    override fun onResponse(
+                                        call: Call<ArrayList<QuizProgressResponse>>,
+                                        response: Response<ArrayList<QuizProgressResponse>>
+                                    ) {
+                                        if (response.isSuccessful) {
+                                            val quizProgressList = response.body()
+                                            // Lakukan sesuatu dengan quizProgressList, misalnya tampilkan di RecyclerView
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<ArrayList<QuizProgressResponse>>, t: Throwable) {
+                                        Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            )
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="MENGGALI POTENSI ANAK ANDA"
+        android:text="MENGGALI POTENSI ANAK ANDA aa"
         android:textAlignment="center"
         android:textColor="#EF5E46"
         android:textSize="38sp"

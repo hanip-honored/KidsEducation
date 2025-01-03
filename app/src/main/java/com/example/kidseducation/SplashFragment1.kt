@@ -34,11 +34,6 @@ class SplashFragment1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonNext.setOnClickListener {
-            val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager)
-            viewPager.currentItem = 1
-        }
     }
 
     override fun onDestroyView() {

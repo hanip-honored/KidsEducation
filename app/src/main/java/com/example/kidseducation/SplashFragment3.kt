@@ -34,14 +34,6 @@ class SplashFragment3 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonNext.setOnClickListener {
-            // Pindah ke MainActivity
-            Intent(requireActivity(), LoginActivity::class.java).also {
-                startActivity(it)
-                requireActivity().finish()
-            }
-        }
     }
 
     override fun onDestroyView() {

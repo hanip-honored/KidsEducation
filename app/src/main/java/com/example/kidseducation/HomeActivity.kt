@@ -30,7 +30,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-//        replaceFragment(HomeFragment())
+        val idUser = intent.getStringExtra("ID_USER")
+
+        val homeFragment = HomeFragment()
+        val bundle = Bundle()
+        bundle.putString("ID_USER", idUser)
+        homeFragment.arguments = bundle
+
+        replaceFragment(homeFragment)
 //
 //        val txtHome: TextView = findViewById(R.id.home)
 //        txtHome.setOnClickListener {

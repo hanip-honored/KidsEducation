@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -29,7 +29,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hallo, Irene"
-                    android:textSize="38sp"
+                    android:textSize="36sp"
+                    android:fontFamily="@font/poppins_extrabold"
                     android:textStyle="bold"
                     android:textColor="#FF8A00" />
 
@@ -38,6 +39,8 @@
                     android:layout_height="wrap_content"
                     android:text="Temukan Ketertarikanmu"
                     android:textSize="14sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="-18dp"
                     android:textStyle="bold"
                     android:textColor="#703E3E" />
 
@@ -50,13 +53,14 @@
                     android:layout_marginTop="12dp"
                     android:textColor="@color/black"
                     android:textColorHint="#703E3E"
+                    android:fontFamily="@font/poppins_bold"
                     android:textSize="14sp"
-                    android:paddingStart="16dp"/>
+                    android:paddingStart="16dp" />
 
             </LinearLayout>
 
             <ImageView
-                android:layout_width="150dp"
+                android:layout_width="130dp"
                 android:layout_height="180dp"
                 android:src="@drawable/cewek"
                 android:layout_marginStart="12dp" />
@@ -67,16 +71,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kategori"
+            android:fontFamily="@font/poppins_bold"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:textColor="#5C2222"/>
+            android:textColor="#5C2222" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewQuiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:nestedScrollingEnabled="false" />
 
         <!-- Section Hari Ini -->
         <TextView
@@ -84,14 +90,26 @@
             android:layout_height="wrap_content"
             android:text="Hari Ini"
             android:textSize="18sp"
+            android:fontFamily="@font/poppins_bold"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:textColor="#5C2222"/>
+            android:textColor="#5C2222" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:nestedScrollingEnabled="false" />
+
+        <TextView
+            android:id="@+id/textNoProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum ada progress hari ini"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

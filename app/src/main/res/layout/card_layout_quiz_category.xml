@@ -11,7 +11,7 @@
         android:id="@+id/cardCategory"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:cardCornerRadius="42dp"
+        app:cardCornerRadius="36dp"
         app:cardElevation="4dp">
 
         <ImageView
@@ -32,5 +32,6 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:fontFamily="@font/poppins_extrabold"
         android:textColor="#5C2222" />
 </LinearLayout>

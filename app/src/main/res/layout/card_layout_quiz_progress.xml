@@ -9,12 +9,12 @@
     android:backgroundTint="@color/white">
 
     <RelativeLayout
+        android:id="@+id/progressContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:background="@drawable/stroke_layout">
 
-        <!-- Nomor di Kiri -->
         <TextView
             android:id="@+id/textNumber"
             android:layout_width="50dp"
@@ -46,7 +46,7 @@
 
         <!-- ProgressBar -->
         <TextView
-            android:id="@+id/textScore"
+            android:id="@+id/textProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

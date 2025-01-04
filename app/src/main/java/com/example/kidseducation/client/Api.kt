@@ -11,7 +11,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
-    @GET("quizcategory")
+    @GET("quizprogress")
     fun getQuizProgress(@Query("id_user") idUser: String): Call<ArrayList<QuizProgressResponse>>
 
     @GET("quizcategory")

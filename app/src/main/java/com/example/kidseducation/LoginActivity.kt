@@ -57,33 +57,17 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         val account = response.body()
                         if (account?.success == true) {
-                            Toast.makeText(
-                                this@LoginActivity,
-                                account?.message.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intentLogin)
-
-                            val idUser = account.data.id_user
-
-                            RetrofitClient.instance.getQuizProgress(idUser).enqueue(
-                                object : Callback<ArrayList<QuizProgressResponse>> {
-                                    override fun onResponse(
-                                        call: Call<ArrayList<QuizProgressResponse>>,
-                                        response: Response<ArrayList<QuizProgressResponse>>
-                                    ) {
-                                        if (response.isSuccessful) {
-                                            val quizProgressList = response.body()
-                                            // Lakukan sesuatu dengan quizProgressList, misalnya tampilkan di RecyclerView
-                                        }
-                                    }
-
-                                    override fun onFailure(call: Call<ArrayList<QuizProgressResponse>>, t: Throwable) {
-                                        Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            )
+                            val idUser = account?.data?.id_user
+                            if (idUser != null) {
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    account?.message.toString(),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
+                                intentLogin.putExtra("ID_USER", idUser)
+                                startActivity(intentLogin)
+                            }
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

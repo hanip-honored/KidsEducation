@@ -10,7 +10,7 @@
 
     <!-- Lapisan Elemen Utama -->
     <item android:bottom="4dp" android:right="4dp">
-        <shape>
+        <shape android:id="@+id/main_layer">
             <solid android:color="#FF90DE" /> <!-- Warna background utama -->
             <stroke android:width="3dp" android:color="#000000" /> <!-- Stroke -->
             <corners android:radius="16dp" />

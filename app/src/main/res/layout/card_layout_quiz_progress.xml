@@ -29,7 +29,6 @@
             android:fontFamily="@font/poppins_bold"
             android:background="@drawable/number_background"/>
 
-        <!-- Nama Kategori -->
         <TextView
             android:id="@+id/textCategory"
             android:layout_width="wrap_content"

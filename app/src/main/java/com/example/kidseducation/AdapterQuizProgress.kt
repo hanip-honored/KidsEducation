@@ -35,9 +35,11 @@ class AdapterQuizProgress(private val listProgress:ArrayList<QuizProgressRespons
             val colors = listOf("#FF90DE", "#FFFF86", "#FF7D2D")
             val color = android.graphics.Color.parseColor(colors[position % colors.size])
 
+            val progressColors = listOf("#DB009A","#979700", "#B34A08")
+            val progressColor = android.graphics.Color.parseColor(progressColors[position % progressColors.size])
+
             val shadowDrawable = GradientDrawable().apply {
                 setColor(android.graphics.Color.BLACK)
-//                cornerRadius = 16f
             }
 
             val mainLayerDrawable = GradientDrawable().apply {
@@ -47,10 +49,11 @@ class AdapterQuizProgress(private val listProgress:ArrayList<QuizProgressRespons
             }
 
             val layerDrawable = LayerDrawable(arrayOf(shadowDrawable, mainLayerDrawable)).apply {
-                setLayerInset(1, 0, 0, 12, 12) // Mengatur inset untuk main layer
+                setLayerInset(1, 0, 0, 12, 12)
             }
 
             relativeProgress.background = layerDrawable
+            progress.progressDrawable.setColorFilter(progressColor, android.graphics.PorterDuff.Mode.SRC_IN)
         }
     }
 

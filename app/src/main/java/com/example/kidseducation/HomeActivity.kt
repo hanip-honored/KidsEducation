@@ -7,13 +7,22 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.EdgeTreatment
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
+import com.google.android.material.shape.ShapePath
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
+
 
 class HomeActivity : AppCompatActivity() {
     private  lateinit var firebaseUser: FirebaseUser
@@ -30,14 +39,21 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        replaceFragment(HomeFragment())
+        val idUser = intent.getStringExtra("ID_USER")
 
-        val txtHome: TextView = findViewById(R.id.home)
-        txtHome.setOnClickListener {
-            replaceFragment(HomeFragment())
-        }
+        val homeFragment = HomeFragment()
+        val bundle = Bundle()
+        bundle.putString("ID_USER", idUser)
+        homeFragment.arguments = bundle
 
-        val textName = findViewById<TextView>(R.id.name)
+        replaceFragment(homeFragment)
+//
+//        val txtHome: TextView = findViewById(R.id.home)
+//        txtHome.setOnClickListener {
+//            replaceFragment(HomeFragment())
+//        }
+
+//        val textName = findViewById<TextView>(R.id.name)
 
 
 

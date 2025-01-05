@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidseducation.client.RetrofitClient
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
+import com.example.kidseducation.response.quizcategory.QuizProgressResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +32,7 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
 
     private val listQuiz = ArrayList<QuizCategoryResponse>()
+    private val listProgress = ArrayList<QuizProgressResponse>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,6 +61,40 @@ class HomeFragment : Fragment() {
                 }
             }
         )
+
+        val textNoProgress: TextView = view.findViewById(R.id.textNoProgress)
+        val RVProgress: RecyclerView = view.findViewById(R.id.recyclerViewProgress)
+        RVProgress.layoutManager = GridLayoutManager(activity, 1)
+
+        val idUser = arguments?.getString("ID_USER")
+        if (idUser != null) {
+            RetrofitClient.instance.getQuizProgress(idUser).enqueue(
+                object : Callback<ArrayList<QuizProgressResponse>> {
+                    override fun onResponse(
+                        call: Call<ArrayList<QuizProgressResponse>>,
+                        response: Response<ArrayList<QuizProgressResponse>>
+                    ) {
+                        val listProgress = response.body() ?: arrayListOf()
+
+                        if (listProgress.isEmpty()) {
+                            RVProgress.visibility = View.GONE
+                            textNoProgress.visibility = View.VISIBLE
+                        } else {
+                            RVProgress.visibility = View.VISIBLE
+                            textNoProgress.visibility = View.GONE
+
+                            val adapterProgress = AdapterQuizProgress(listProgress)
+                            RVProgress.adapter = adapterProgress
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ArrayList<QuizProgressResponse>>, t: Throwable) {
+                        Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            )
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -3,12 +3,6 @@ package com.example.kidseducation
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -17,13 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kidseducation.client.RetrofitClient
 import com.example.kidseducation.response.account.LoginResponse
-import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.example.kidseducation.response.quizcategory.QuizProgressResponse
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,13 +57,17 @@ class LoginActivity : AppCompatActivity() {
                     ) {
                         val account = response.body()
                         if (account?.success == true) {
-                            Toast.makeText(
-                                this@LoginActivity,
-                                account?.message.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intentLogin)
+                            val idUser = account?.data?.id_user
+                            if (idUser != null) {
+                                Toast.makeText(
+                                    this@LoginActivity,
+                                    account?.message.toString(),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
+                                intentLogin.putExtra("ID_USER", idUser)
+                                startActivity(intentLogin)
+                            }
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Progres1Activity">
+
+    <!-- Header dengan background gambar header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:background="@drawable/header">
+
+        <ImageView
+            android:id="@+id/imgPanda"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/panda"
+            android:contentDescription="Panda" />
+
+        <TextView
+            android:id="@+id/txtProgres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:text="Progres"
+            android:textColor="#593D53"
+            android:textSize="37sp"
+            android:fontFamily="@font/poppins_extrabold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <!-- Level indicator -->
+        <TextView
+            android:id="@+id/txtLevel"
+            android:layout_width="126dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/level"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:text="LEVEL 1"
+            android:textAlignment="center"
+            android:textColor="#593D53"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_extrabold" />
+
+        <ImageView
+            android:id="@+id/circle_back"
+            android:layout_width="40dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="11.5dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/circle_back"
+            android:contentDescription="back_button" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginLeft="49dp"
+            android:src="@drawable/back"
+            android:contentDescription="back_button" />
+    </RelativeLayout>
+
+    <!-- Progression path -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- Level 10 -->
+        <TextView
+            android:id="@+id/txtLevel10"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/circle_abu"
+            android:gravity="center"
+            android:text="10"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 9 -->
+        <TextView
+            android:id="@+id/txtLevel9"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="54dp"
+            android:background="@drawable/circle_abu"
+            android:gravity="center"
+            android:text="9"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel10"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 8 -->
+        <TextView
+            android:id="@+id/txtLevel8"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="103dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="8"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel9"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 7 -->
+        <TextView
+            android:id="@+id/txtLevel7"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="147dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="7"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel8"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 6 -->
+        <TextView
+            android:id="@+id/txtLevel6"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="191dp"
+            android:layout_marginLeft="200dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="6"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel7"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 5 -->
+        <TextView
+            android:id="@+id/txtLevel5"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="235dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="5"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel6"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 4 -->
+        <TextView
+            android:id="@+id/txtLevel4"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="279dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="4"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel5"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <ImageView
+            android:id="@+id/imgSinga"
+            android:layout_width="131dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="60dp"
+            android:layout_alignEnd="@id/txtLevel5"
+            android:src="@drawable/singa"
+            android:contentDescription="Singa" />
+
+        <!-- Level 3 -->
+        <TextView
+            android:id="@+id/txtLevel3"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="333dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="3"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel4"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+        <ImageView
+            android:id="@+id/imgFlamingo"
+            android:layout_width="130dp"
+            android:layout_height="131dp"
+            android:layout_marginTop="190dp"
+            android:layout_margin="@id/imgSinga"
+            android:layout_alignStart="@id/txtLevel2"
+            android:src="@drawable/flamingo"
+            android:contentDescription="Flamingo" />
+
+        <!-- Level 2 -->
+        <TextView
+            android:id="@+id/txtLevel2"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="377dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="2"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel3"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <ImageView
+            android:id="@+id/imgPenguin4"
+            android:layout_width="130dp"
+            android:layout_height="131dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="340dp"
+            android:layout_alignEnd="@id/txtLevel5"
+            android:src="@drawable/penguin"
+            android:contentDescription="Penguin" />
+
+        <!-- Level 1 -->
+        <TextView
+            android:id="@+id/txtLevel1"
+            android:layout_width="69dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="431dp"
+            android:background="@drawable/circle_pink"
+            android:gravity="center"
+            android:text="1"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:textColor="#593D53"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:layout_margin="@id/txtLevel2"
+            android:layout_alignParentStart="true"
+            android:elevation="4dp" />
+
+        <!-- Level 6 hingga Level 10 diatur dengan pola yang sama -->
+        </RelativeLayout>
+
+</LinearLayout>

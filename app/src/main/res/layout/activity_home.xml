@@ -36,6 +36,7 @@
         android:backgroundTint="@android:color/white"
         android:elevation="0dp"
         android:src="@drawable/scan"
+        android:tint="@null"
         app:borderWidth="0dp" />
 
     <!-- Bottom Navigation View -->
@@ -47,6 +48,6 @@
         android:background="@color/white"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_nav_menu"
-        app:itemIconTint="@color/black"/>
+        app:itemIconTint="@null"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

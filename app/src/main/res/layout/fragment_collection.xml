@@ -1,43 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="16dp"
-    android:background="#FFFAFA"
-    android:layout_marginBottom="50dp">
+    android:background="#BAE3FF"
+    android:clipToPadding="true">
 
+    <!-- Header Image -->
     <ImageView
         android:id="@+id/imageHeader"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/top_koleksi"
-        android:layout_marginTop="-80dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/top_book_koleksi"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
+    <!-- Title Text -->
     <TextView
         android:id="@+id/titleKoleksi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Koleksi"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textColor="#86290A"
         android:fontFamily="@font/poppins_extrabold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp" />
+        android:layout_marginTop="45dp" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewKoleksi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/titleKoleksi"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bottom_app_bar_background"
         android:clipToPadding="false"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
-        android:layout_marginLeft="10dp"
+        android:paddingTop="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:scrollbars="vertical" />
 
 </RelativeLayout>

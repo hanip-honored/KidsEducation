@@ -45,8 +45,8 @@
         android:id="@+id/imageViewPreLogin"
         android:layout_width="174dp"
         android:layout_height="229dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="140dp"
         android:src="@drawable/babi"/>
     <RelativeLayout
         android:layout_width="match_parent"

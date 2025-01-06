@@ -1,10 +1,19 @@
 package com.example.kidseducation
 
+import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kidseducation.client.RetrofitClient
+import com.example.kidseducation.response.collection.CollectionCategoryResponse
+import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +29,32 @@ class ProgressFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private val listProgressUser = ArrayList<QuizCategoryResponse>()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val RVKoleksi: RecyclerView = view.findViewById(R.id.recyclerViewProgressUser)
+        RVKoleksi.layoutManager = GridLayoutManager(activity, 3)
+
+        RetrofitClient.instance.getQuizCategory().enqueue(
+            object : Callback<ArrayList<QuizCategoryResponse>> {
+                override fun onResponse(
+                    call: Call<ArrayList<QuizCategoryResponse>>,
+                    response: Response<ArrayList<QuizCategoryResponse>>
+                ) {
+                    val listProgressUser = response.body() ?: arrayListOf()
+                    var adapter = AdapterProgressUser(listProgressUser)
+                    RVKoleksi.adapter = adapter
+                }
+
+                override fun onFailure(p0: Call<ArrayList<QuizCategoryResponse>>, p1: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

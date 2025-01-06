@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -36,6 +37,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showWelcomePopup()
 
         val txtWelcome: TextView = view.findViewById(R.id.textWelcome)
         val username = arguments?.getString("USERNAME")
@@ -99,6 +102,28 @@ class HomeFragment : Fragment() {
             )
         }
 
+    }
+
+    private fun showWelcomePopup() {
+        val dialog = android.app.Dialog(requireContext())
+        dialog.setContentView(R.layout.welcome_popup)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent) // Buat background dialog transparan
+        dialog.setCancelable(false)
+
+        val window = dialog.window
+        window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),  // 90% dari lebar layar
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        window?.setBackgroundDrawableResource(android.R.color.transparent) // Menghilangkan background putih default
+
+        val closeButton: Button = dialog.findViewById(R.id.close_button)
+
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna latar belakang progress bar -->
+    <solid android:color="@color/white"/>
+
+    <!-- Membuat sudut melengkung -->
+    <corners android:radius="8dp"/>
+
+    <!-- Menambahkan garis tepi (stroke) -->
+    <stroke
+        android:width="3dp"
+        android:color="#FECAC3"/> <!-- Warna garis tepi -->
+</shape>

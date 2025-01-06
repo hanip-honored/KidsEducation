@@ -1,0 +1,20 @@
+<!-- popup_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shadow (bagian atas) -->
+    <item>
+        <shape>
+            <solid android:color="#F4C651" /> <!-- Bayangan hitam dengan opasitas -->
+            <corners android:radius="32dp" />
+        </shape>
+    </item>
+
+    <!-- Main background -->
+    <item android:top="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFF9EA" /> <!-- Warna background putih -->
+            <corners android:radius="24dp" /> <!-- Radius sudut semua sisi -->
+        </shape>
+    </item>
+
+</layer-list>

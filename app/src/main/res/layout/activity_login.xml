@@ -54,7 +54,7 @@
         android:text="Selamat datang kembali, kami merindukanmu" />
 
     <EditText
-        android:id="@+id/TextEmail"
+        android:id="@+id/email"
         android:layout_width="328dp"
         android:layout_height="50dp"
         android:backgroundTint="#FFFFFF"
@@ -64,11 +64,10 @@
         android:inputType="textEmailAddress"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"
-        android:elevation="2dp"
         android:background="@drawable/shape"/>
 
     <EditText
-        android:id="@+id/TextPassword"
+        android:id="@+id/password"
         android:layout_width="328dp"
         android:layout_height="50dp"
         android:backgroundTint="#FFFFFF"
@@ -78,12 +77,11 @@
         android:inputType="textPassword"
         android:gravity="center_vertical"
         android:layout_marginTop="15dp"
-        android:elevation="2dp"
         android:background="@drawable/shape"/>
 
     <!-- Button Masuk -->
     <Button
-        android:id="@+id/buttonMasuk"
+        android:id="@+id/loginButton"
         android:layout_width="328dp"
         android:layout_height="55dp"
         android:backgroundTint="#FF8736"

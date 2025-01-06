@@ -1,0 +1,46 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <FrameLayout
+        android:id="@+id/strokeProgress"
+        android:layout_width="86dp"
+        android:layout_height="200dp"
+        android:background="@drawable/background_progress_bar"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp">
+
+        <View
+            android:id="@+id/view_progress"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/progress_view" />
+
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_gravity="top"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp" />
+
+        <TextView
+            android:id="@+id/text_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50%"
+            android:textSize="20sp"
+            android:textColor="#6D4646"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="22dp"
+            android:fontFamily="@font/poppins_extrabold"/>
+    </FrameLayout>
+
+</LinearLayout>

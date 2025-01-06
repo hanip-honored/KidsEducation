@@ -63,7 +63,6 @@
             android:layout_below="@id/textAgeInfo"
             android:layout_marginTop="10dp"
             android:paddingStart="24dp"
-            android:paddingEnd="24dp"
             android:orientation="vertical">
 
             <TextView
@@ -76,14 +75,16 @@
                 android:fontFamily="@font/poppins_bold" />
 
             <ProgressBar
-                android:id="@+id/progressLevel"
+                android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginTop="4dp"
-                android:progress="14"
-                android:max="200"
-                android:progressDrawable="@drawable/progress_bar_drawable" />
+                android:layout_width="365dp"
+                android:layout_height="16dp"
+                android:layout_below="@id/textLevel"
+                android:progress="10"
+                android:max="100"
+                android:progressTint="#93C44B"
+                android:backgroundTint="@color/white"
+                android:scaleY="2.2"/>
 
             <TextView
                 android:id="@+id/textLevelInfo"
@@ -119,21 +120,22 @@
                 app:cardElevation="4dp">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:layout_width="167dp"
+                    android:layout_height="145dp"
                     android:gravity="center">
 
                     <!-- Circular Progress Bar -->
                     <ProgressBar
-                        android:id="@+id/progressCorrect"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:indeterminate="false"
+                        android:id="@+id/progressBar2"
+                        style="@style/Theme.AppCompat.Dialog.MinWidth"
+                        android:layout_width="107dp"
+                        android:layout_height="107dp"
+                        android:paddingTop="0dp"
+                        android:layout_centerInParent="true"
+                        android:progress="10"
                         android:max="100"
-                        android:progress="80"
-                        android:progressDrawable="@drawable/circular_progress_bar" />
+                        android:progressTint="#93C44B"
+                        android:backgroundTint="@color/white"/>
 
                     <!-- Text in the center of the circle -->
                     <TextView
@@ -150,13 +152,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/progressCorrect"
+                        android:layout_below="@id/textCorrect"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="30dp"
                         android:text="Menjawab Benar"
                         android:textSize="14sp"
                         android:textColor="#757575"
                         android:fontFamily="@font/poppins_regular" />
+
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -170,21 +173,22 @@
                 app:cardElevation="4dp">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:layout_width="167dp"
+                    android:layout_height="145dp"
                     android:gravity="center">
 
                     <!-- Circular Progress Bar -->
                     <ProgressBar
-                        android:id="@+id/progressWrong"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:indeterminate="false"
+                        android:id="@+id/progressBar3"
+                        style="@style/Theme.AppCompat.Dialog.MinWidth"
+                        android:layout_width="107dp"
+                        android:layout_height="107dp"
+                        android:paddingTop="0dp"
+                        android:layout_centerInParent="true"
+                        android:progress="10"
                         android:max="100"
-                        android:progress="40"
-                        android:progressDrawable="@drawable/circular_progress_bar" />
+                        android:progressTint="#93C44B"
+                        android:backgroundTint="@color/white"/>
 
                     <!-- Text in the center of the circle -->
                     <TextView
@@ -201,9 +205,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/progressWrong"
+                        android:layout_below="@id/textWrong"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="30dp"
                         android:text="Menjawab Salah"
                         android:textSize="14sp"
                         android:textColor="#757575"

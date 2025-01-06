@@ -43,41 +43,20 @@
         android:textSize="24sp"
         android:textAlignment="center"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Mendaftar" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:text="Mungkin kamu perlu orang tuamu untuk \nmembuatkan akun untukmu agar kamu \nbisa mulai belajar." />
+        android:text="Siapa Namamu?" />
 
     <EditText
-        android:id="@+id/TextEmail"
+        android:id="@+id/TextNama"
         android:layout_width="328dp"
         android:layout_height="50dp"
         android:backgroundTint="#FFFFFF"
-        android:hint="Masukkan email"
         android:paddingLeft="20dp"
-        android:textColor="#000000"
-        android:inputType="textEmailAddress"
+        android:textColor="#AAAAAA"
+        android:inputType="text"
+        android:text="Masukkan nama"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"
-        android:background="@drawable/shape"/>
-
-    <EditText
-        android:id="@+id/TextPassword"
-        android:layout_width="328dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#FFFFFF"
-        android:hint="Masukkan password"
-        android:paddingLeft="20dp"
-        android:textColor="#000000"
-        android:inputType="textPassword"
-        android:gravity="center_vertical"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/shape"/>
+        android:background="@drawable/shape" />
 
     <!-- Button Masuk -->
     <Button
@@ -85,11 +64,11 @@
         android:layout_width="328dp"
         android:layout_height="55dp"
         android:backgroundTint="#FF8736"
-        android:text="Daftar"
+        android:text="Selanjutnya"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:fontFamily="@font/poppins_semibold"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="160dp"/>
+        android:layout_marginBottom="280dp"/>
 
 </LinearLayout>

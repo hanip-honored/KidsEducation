@@ -1,0 +1,22 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Warna latar belakang lingkaran -->
+    <solid android:color="#FFFFFF" />
+
+    <!-- Shadow halus pada lingkaran -->
+    <size
+        android:width="80dp"
+        android:height="80dp" />
+
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp" />
+
+    <!-- Efek border lingkaran -->
+    <stroke
+        android:width="2dp"
+        android:color="#E0E0E0" />
+</shape>

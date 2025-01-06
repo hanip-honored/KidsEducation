@@ -67,12 +67,12 @@
                 android:id="@+id/buttonMasuk"
                 android:layout_width="182dp"
                 android:layout_height="81dp"
-                android:text="Masuk"
-                android:textColor="#6D4646"
+                android:text="Babi"
+                android:textColor="#FF9688"
                 android:textSize="24sp"
                 android:fontFamily="@font/poppins_extrabold"
                 android:backgroundTint="@android:color/white"
-                app:strokeColor="#6D4646"
+                app:strokeColor="#FF9688"
                 app:strokeWidth="5dp"
                 app:cornerRadius="34dp" />
         </androidx.cardview.widget.CardView>
@@ -91,12 +91,12 @@
                 android:id="@+id/buttonDaftar"
                 android:layout_width="182dp"
                 android:layout_height="81dp"
-                android:text="Daftar"
-                android:textColor="#6D4646"
+                android:text="Sapi"
+                android:textColor="#FF9688"
                 android:textSize="24sp"
                 android:fontFamily="@font/poppins_extrabold"
                 android:backgroundTint="@android:color/white"
-                app:strokeColor="#6D4646"
+                app:strokeColor="#FF9688"
                 app:strokeWidth="5dp"
                 app:cornerRadius="34dp" />
         </androidx.cardview.widget.CardView>

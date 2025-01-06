@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Latar belakang lingkaran abu-abu -->
+    <item android:id="@android:id/background">
+        <shape android:shape="oval">
+            <solid android:color="#E0E0E0" />
+        </shape>
+    </item>
+
+    <!-- Progress lingkaran berwarna -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="oval">
+                <solid android:color="#4CAF50" /> <!-- Warna hijau untuk progress -->
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

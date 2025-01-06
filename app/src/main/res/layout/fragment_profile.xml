@@ -1,14 +1,293 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:background="#BAE3FF">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Header Image -->
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/imageHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-51dp"
+            android:layout_marginTop="-60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/top_task_profile" />
+    </RelativeLayout>
+
+    <!-- Konten dengan background melengkung -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="620dp"
+        android:layout_marginTop="125dp"
+        android:background="@drawable/bottom_app_bar_background"
+        android:paddingBottom="16dp">
 
-</FrameLayout>
+        <!-- Name Text -->
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:text="Irrene"
+            android:textSize="24sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- Age and Time Info -->
+        <TextView
+            android:id="@+id/textAgeInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:text="3 Years 11 Months 20 Days"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:fontFamily="@font/poppins_regular" />
+
+        <!-- Level and Progress -->
+        <LinearLayout
+            android:id="@+id/layoutLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textAgeInfo"
+            android:layout_marginTop="10dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level 1"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_bold" />
+
+            <ProgressBar
+                android:id="@+id/progressLevel"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="4dp"
+                android:progress="14"
+                android:max="200"
+                android:progressDrawable="@drawable/progress_bar_drawable" />
+
+            <TextView
+                android:id="@+id/textLevelInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="L1/L10"
+                android:textSize="12sp"
+                android:textColor="#757575"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Report -->
+        <LinearLayout
+            android:id="@+id/layoutReport"
+            android:layout_width="408dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/layoutLevel"
+            android:layout_marginTop="30dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Card for Correct Answers -->
+            <!-- Card for Correct Answers -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <!-- Circular Progress Bar -->
+                    <ProgressBar
+                        android:id="@+id/progressCorrect"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="80"
+                        android:progressDrawable="@drawable/circular_progress_bar" />
+
+                    <!-- Text in the center of the circle -->
+                    <TextView
+                        android:id="@+id/textCorrect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="80"
+                        android:textSize="24sp"
+                        android:textColor="#4CAF50"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <!-- Description text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/progressCorrect"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="Menjawab Benar"
+                        android:textSize="14sp"
+                        android:textColor="#757575"
+                        android:fontFamily="@font/poppins_regular" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card for Wrong Answers -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <!-- Circular Progress Bar -->
+                    <ProgressBar
+                        android:id="@+id/progressWrong"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="40"
+                        android:progressDrawable="@drawable/circular_progress_bar" />
+
+                    <!-- Text in the center of the circle -->
+                    <TextView
+                        android:id="@+id/textWrong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="40"
+                        android:textSize="24sp"
+                        android:textColor="#FF5722"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <!-- Description text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/progressWrong"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="Menjawab Salah"
+                        android:textSize="14sp"
+                        android:textColor="#757575"
+                        android:fontFamily="@font/poppins_regular" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Report Section -->
+        <LinearLayout
+            android:id="@+id/layoutReport2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutLevel"
+            android:layout_marginTop="5dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textLevel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_bold" />
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/layoutReport"
+            android:layout_marginTop="16dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buttonModeGelap"
+                android:layout_width="168dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#E0E0E0"
+                android:text="Mode Gelap"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_bold" />
+
+            <Button
+                android:id="@+id/buttonInfo"
+                android:layout_width="168dp"
+                android:layout_height="45dp"
+                android:backgroundTint="#E0E0E0"
+                android:text="Info"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_bold" />
+        </LinearLayout>
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutReport"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#FF7043"
+            android:text="Keluar/Ganti Akun"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_bold" />
+    </RelativeLayout>
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/profile_icon"
+        android:background="@drawable/circle_background_profile"
+        android:scaleType="centerInside" />
+
+</RelativeLayout>

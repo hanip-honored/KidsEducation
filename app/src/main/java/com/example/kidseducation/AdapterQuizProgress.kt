@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidseducation.client.RetrofitClient
-import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizProgressResponse
 import com.squareup.picasso.Picasso
 

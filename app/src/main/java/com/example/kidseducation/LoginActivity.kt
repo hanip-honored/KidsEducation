@@ -58,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
                         val account = response.body()
                         if (account?.success == true) {
                             val idUser = account?.data?.id_user
+                            val username = account?.data?.nickname
                             if (idUser != null) {
                                 Toast.makeText(
                                     this@LoginActivity,
@@ -66,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
                                 ).show()
                                 val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
                                 intentLogin.putExtra("ID_USER", idUser)
+                                intentLogin.putExtra("USERNAME", username)
                                 startActivity(intentLogin)
                             }
                         } else {

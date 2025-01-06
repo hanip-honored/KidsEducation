@@ -22,7 +22,6 @@ class AdapterQuizCategory(private val listQuiz:ArrayList<QuizCategoryResponse>):
             val url = RetrofitClient.URL + response.image_kategori
             Picasso.get().load(url).into(imgQuiz)
 
-            // Set warna latar belakang CardView
             val colors = listOf("#FECAC3", "#A2DDC2", "#FF8A00", "#FFE3C1", "#BAE3FF", "#E7E1FF")
             val color = android.graphics.Color.parseColor(colors[position % colors.size])
             cardCategory.setCardBackgroundColor(color)

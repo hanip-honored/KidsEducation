@@ -37,6 +37,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val txtWelcome: TextView = view.findViewById(R.id.textWelcome)
+        val username = arguments?.getString("USERNAME")
+        txtWelcome.text = "Hallo, $username"
+
         val RVQuiz: RecyclerView = view.findViewById(R.id.recyclerViewQuiz)
         RVQuiz.layoutManager = GridLayoutManager(activity, 4)
 

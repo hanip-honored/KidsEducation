@@ -1,6 +1,7 @@
 package com.example.kidseducation.client
 
 import com.example.kidseducation.response.account.LoginResponse
+import com.example.kidseducation.response.collection.CollectionCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizProgressResponse
 import retrofit2.Call
@@ -11,6 +12,9 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
+    @GET("CollectionCategory")
+    fun getCollectionCategory(): Call<ArrayList<CollectionCategoryResponse>>
+
     @GET("quizprogress")
     fun getQuizProgress(@Query("id_user") idUser: String): Call<ArrayList<QuizProgressResponse>>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Progres1Activity">
+    tools:context=".ProgressActivity">
 
     <!-- Header dengan background gambar header -->
     <RelativeLayout
@@ -299,6 +299,6 @@
             android:elevation="4dp" />
 
         <!-- Level 6 hingga Level 10 diatur dengan pola yang sama -->
-        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

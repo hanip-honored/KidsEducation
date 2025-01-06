@@ -40,13 +40,30 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val idUser = intent.getStringExtra("ID_USER")
+        val username = intent.getStringExtra("USERNAME")
 
-        val homeFragment = HomeFragment()
         val bundle = Bundle()
         bundle.putString("ID_USER", idUser)
-        homeFragment.arguments = bundle
+        bundle.putString("USERNAME", username)
 
+        val homeFragment = HomeFragment()
+        homeFragment.arguments = bundle
         replaceFragment(homeFragment)
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            val fragment: Fragment = when (item.itemId) {
+                R.id.item_1 -> HomeFragment()
+                R.id.item_2 -> CollectionFragment()
+                R.id.item_3 -> ProgressFragment()
+                R.id.item_4 -> ProfileFragment()
+                else -> return@setOnNavigationItemSelectedListener false
+            }
+            fragment.arguments = bundle
+            replaceFragment(fragment)
+            true
+        }
 //
 //        val txtHome: TextView = findViewById(R.id.home)
 //        txtHome.setOnClickListener {

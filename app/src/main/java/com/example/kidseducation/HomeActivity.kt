@@ -27,14 +27,15 @@ import com.google.firebase.auth.auth
 class HomeActivity : AppCompatActivity() {
     private  lateinit var firebaseUser: FirebaseUser
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment, bundle: Bundle){
+        fragment.arguments = bundle
         val fragmentManager = supportFragmentManager
-        val fragmentTrx = fragmentManager.beginTransaction()
-        fragmentTrx.replace(R.id.fragmentContainerView, fragment)
-        fragmentTrx.commit()
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+        fragmentTransaction.commit()
     }
 
-    @SuppressLint("MissingInflatedId", "SetTextI18n")
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -46,24 +47,39 @@ class HomeActivity : AppCompatActivity() {
         bundle.putString("ID_USER", idUser)
         bundle.putString("USERNAME", username)
 
-        val homeFragment = HomeFragment()
-        homeFragment.arguments = bundle
-        replaceFragment(homeFragment)
+        // Menampilkan fragmen awal
+        replaceFragment(HomeFragment(), bundle)
 
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
-
-        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            val fragment: Fragment = when (item.itemId) {
-                R.id.item_1 -> HomeFragment()
-                R.id.item_2 -> CollectionFragment()
-                R.id.item_3 -> ProgressFragment()
-                R.id.item_4 -> ProfileFragment()
-                else -> return@setOnNavigationItemSelectedListener false
-            }
-            fragment.arguments = bundle
-            replaceFragment(fragment)
-            true
+        // Menangani klik pada menu navigasi
+        findViewById<TextView>(R.id.txtMenuHome).setOnClickListener {
+            replaceFragment(HomeFragment(), bundle)
         }
+
+        findViewById<TextView>(R.id.txtMenuBook).setOnClickListener {
+            replaceFragment(CollectionFragment(), bundle)
+        }
+
+        findViewById<TextView>(R.id.txtMenuTimer).setOnClickListener {
+            replaceFragment(ProgressFragment(), bundle)
+        }
+
+        findViewById<TextView>(R.id.txtMenuUser).setOnClickListener {
+            replaceFragment(ProfileFragment(), bundle)
+        }
+
+        // Menangani klik pada tombol scan
+//        findViewById<TextView>(R.id.txtMenuScan).setOnClickListener {
+//            val intent = Intent(this, ScanActivity::class.java)
+//            intent.putExtra("ID_USER", idUser)
+//            startActivity(intent)
+//        }
+//
+//        findViewById<TextView>(R.id.txtMenuScan2).setOnClickListener {
+//            val intent = Intent(this, ScanActivity::class.java)
+//            intent.putExtra("ID_USER", idUser)
+//            startActivity(intent)
+//        }
+
 //
 //        val txtHome: TextView = findViewById(R.id.home)
 //        txtHome.setOnClickListener {

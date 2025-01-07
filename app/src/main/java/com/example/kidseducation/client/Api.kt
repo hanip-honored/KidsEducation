@@ -4,6 +4,7 @@ import com.example.kidseducation.response.account.LoginResponse
 import com.example.kidseducation.response.collection.CollectionCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizProgressResponse
+import com.example.kidseducation.response.user.UserQuizResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -12,6 +13,12 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
+    @GET("UserQuiz")
+    fun getUserQuiz(
+        @Query("id_kategori") idKategori: String,
+        @Query("id_user") idUser: String
+    ): Call<ArrayList<UserQuizResponse>>
+
     @GET("CollectionCategory")
     fun getCollectionCategory(): Call<ArrayList<CollectionCategoryResponse>>
 

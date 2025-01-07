@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.kidseducation.HomeFragment"
@@ -15,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="70dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consLayout"
@@ -83,11 +85,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="730dp"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:elevation="5dp"
         android:gravity="center"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="55dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="290dp"

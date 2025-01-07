@@ -140,7 +140,8 @@
                         android:id="@+id/textCorrect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="63dp"
+                        android:layout_marginTop="43dp"
                         android:text="80"
                         android:textSize="24sp"
                         android:textColor="#4CAF50"
@@ -151,8 +152,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textCorrect"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
                         android:text="Menjawab Benar"
                         android:textSize="14sp"
                         android:textColor="#757575"
@@ -171,7 +172,7 @@
                 app:cardElevation="4dp">
 
                 <RelativeLayout
-                    android:layout_width="167dp"
+                    android:layout_width="166dp"
                     android:layout_height="145dp"
                     android:gravity="center">
 
@@ -193,7 +194,8 @@
                         android:id="@+id/textWrong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="63dp"
+                        android:layout_marginTop="43dp"
                         android:text="40"
                         android:textSize="24sp"
                         android:textColor="#FF5722"
@@ -204,8 +206,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textWrong"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
                         android:text="Menjawab Salah"
                         android:textSize="14sp"
                         android:textColor="#757575"

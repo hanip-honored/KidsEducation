@@ -25,10 +25,9 @@
     <!-- Konten dengan background melengkung -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="620dp"
+        android:layout_height="640dp"
         android:layout_marginTop="125dp"
-        android:background="@drawable/bottom_app_bar_background"
-        android:paddingBottom="16dp">
+        android:background="@drawable/bottom_app_bar_background">
 
         <!-- Name Text -->
         <TextView
@@ -110,6 +109,7 @@
             android:gravity="center">
 
             <!-- Card for Correct Answers -->
+            <!-- Card for Correct Answers -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -124,11 +124,16 @@
                     android:gravity="center">
 
                     <!-- Circular Progress Bar -->
-                    <ProgressBar
-                        android:id="@+id/progressBar2"
-                        style="@style/CircularProgressBarCorrect"
-                        android:layout_centerInParent="true"
-                        android:progress="80" />
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/circularProgressBar"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:cpb_progress="60"
+                        app:cpb_progress_max="100"                        app:cpb_progressbar_width="10dp"
+                        app:cpb_background_progressbar_width="10dp"
+                        app:cpb_progressbar_color="#4CAF50"
+                        android:layout_marginLeft="18dp"
+                        app:cpb_background_progressbar_color="#E0E0E0" />
 
                     <!-- Text in the center of the circle -->
                     <TextView
@@ -151,7 +156,7 @@
                         android:text="Menjawab Benar"
                         android:textSize="14sp"
                         android:textColor="#757575"
-                        android:fontFamily="@font/poppins_regular" />
+                        android:fontFamily="@font/poppins_medium" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -171,11 +176,17 @@
                     android:gravity="center">
 
                     <!-- Circular Progress Bar -->
-                    <ProgressBar
-                        android:id="@+id/progressBar3"
-                        style="@style/CircularProgressBarWrong"
-                        android:layout_centerInParent="true"
-                        android:progress="40" />
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/circularProgressBar2"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        app:cpb_progress="60"
+                        app:cpb_progress_max="100"
+                        app:cpb_progressbar_width="10dp"
+                        app:cpb_background_progressbar_width="10dp"
+                        app:cpb_progressbar_color="#FF5722"
+                        android:layout_marginLeft="18dp"
+                        app:cpb_background_progressbar_color="#E0E0E0" />
 
                     <!-- Text in the center of the circle -->
                     <TextView

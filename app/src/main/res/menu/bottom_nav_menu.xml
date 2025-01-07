@@ -2,25 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Home -->
     <item
-        android:id="@+id/item_1"
-        android:icon="@drawable/home"
+        android:id="@+id/home"
+        android:icon="@drawable/home_kuning"
         android:title="Home" />
 
     <!-- Menu -->
     <item
-        android:id="@+id/item_2"
-        android:icon="@drawable/book"
-        android:title="Menu" />
+        android:id="@+id/book"
+        android:icon="@drawable/book_hitam"
+        android:title="Book" />
+
+    <!-- Blank -->
+    <item
+        android:enabled="false"
+        android:title=""/>
 
     <!-- Transactions -->
     <item
-        android:id="@+id/item_3"
-        android:icon="@drawable/timer"
-        android:title="Transaction" />
+        android:id="@+id/timer"
+        android:icon="@drawable/timer_hitam"
+        android:title="Timer" />
 
     <!-- Profile -->
     <item
-        android:id="@+id/item_4"
-        android:icon="@drawable/user"
+        android:id="@+id/user"
+        android:icon="@drawable/user_hitam"
         android:title="Profile" />
 </menu>

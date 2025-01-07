@@ -6,6 +6,29 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/circle_back"
+            android:layout_width="40dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="11.5dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/circle_back"
+            android:contentDescription="back_button" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginLeft="39dp"
+            android:src="@drawable/back"
+            android:contentDescription="back_button" />
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -51,7 +74,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:paddingTop="11.5dp">
+        android:paddingTop="11.5dp"
+        android:layout_marginBottom="40dp">
 
         <!-- CardView dengan Button Masuk -->
         <androidx.cardview.widget.CardView

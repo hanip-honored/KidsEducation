@@ -109,12 +109,11 @@
             android:gravity="center">
 
             <!-- Card for Correct Answers -->
-            <!-- Card for Correct Answers -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="8dp"
+                android:layout_margin="5dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -167,7 +166,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
+                android:layout_margin="5dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -275,8 +274,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/layoutReport"
             android:layout_marginTop="70dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginEnd="34dp"
             android:backgroundTint="#FF7043"
             android:text="Keluar/Ganti Akun"
             android:textColor="#FFFFFF"

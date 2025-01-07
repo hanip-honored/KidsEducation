@@ -110,7 +110,6 @@
             android:gravity="center">
 
             <!-- Card for Correct Answers -->
-            <!-- Card for Correct Answers -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -127,15 +126,9 @@
                     <!-- Circular Progress Bar -->
                     <ProgressBar
                         android:id="@+id/progressBar2"
-                        style="@style/Theme.AppCompat.Dialog.MinWidth"
-                        android:layout_width="107dp"
-                        android:layout_height="107dp"
-                        android:paddingTop="0dp"
+                        style="@style/CircularProgressBarCorrect"
                         android:layout_centerInParent="true"
-                        android:progress="10"
-                        android:max="100"
-                        android:progressTint="#93C44B"
-                        android:backgroundTint="@color/white"/>
+                        android:progress="80" />
 
                     <!-- Text in the center of the circle -->
                     <TextView
@@ -180,15 +173,9 @@
                     <!-- Circular Progress Bar -->
                     <ProgressBar
                         android:id="@+id/progressBar3"
-                        style="@style/Theme.AppCompat.Dialog.MinWidth"
-                        android:layout_width="107dp"
-                        android:layout_height="107dp"
-                        android:paddingTop="0dp"
+                        style="@style/CircularProgressBarWrong"
                         android:layout_centerInParent="true"
-                        android:progress="10"
-                        android:max="100"
-                        android:progressTint="#93C44B"
-                        android:backgroundTint="@color/white"/>
+                        android:progress="40" />
 
                     <!-- Text in the center of the circle -->
                     <TextView

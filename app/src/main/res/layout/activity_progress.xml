@@ -14,7 +14,7 @@
         android:background="@drawable/header">
 
         <ImageView
-            android:id="@+id/imgPanda"
+            android:id="@+id/imgHeader"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_alignParentStart="true"
@@ -37,7 +37,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp">
 
         <!-- Level indicator -->
         <TextView
@@ -114,7 +115,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel10"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
@@ -133,7 +133,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel9"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
@@ -152,7 +151,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel8"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
@@ -171,7 +169,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel7"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
@@ -190,7 +187,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel6"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
@@ -209,12 +205,11 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel5"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
         <ImageView
-            android:id="@+id/imgSinga"
+            android:id="@+id/img1"
             android:layout_width="131dp"
             android:layout_height="110dp"
             android:layout_marginTop="60dp"
@@ -237,16 +232,13 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel4"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
         <ImageView
-            android:id="@+id/imgFlamingo"
+            android:id="@+id/img2"
             android:layout_width="130dp"
             android:layout_height="131dp"
             android:layout_marginTop="190dp"
-            android:layout_margin="@id/imgSinga"
-            android:layout_alignStart="@id/txtLevel2"
             android:src="@drawable/flamingo"
             android:contentDescription="Flamingo" />
 
@@ -265,12 +257,11 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel3"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 
         <ImageView
-            android:id="@+id/imgPenguin4"
+            android:id="@+id/img3"
             android:layout_width="130dp"
             android:layout_height="131dp"
             android:layout_marginLeft="200dp"
@@ -294,7 +285,6 @@
             android:textColor="#593D53"
             android:textSize="25sp"
             android:fontFamily="@font/poppins_extrabold"
-            android:layout_margin="@id/txtLevel2"
             android:layout_alignParentStart="true"
             android:elevation="4dp" />
 

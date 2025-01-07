@@ -14,7 +14,7 @@
             android:id="@+id/circle_back"
             android:layout_width="40dp"
             android:layout_height="37dp"
-            android:layout_marginTop="11.5dp"
+            android:layout_marginTop="26.5dp"
             android:layout_marginLeft="30dp"
             android:src="@drawable/circle_back"
             android:contentDescription="back_button" />
@@ -23,7 +23,7 @@
             android:id="@+id/back"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="36dp"
             android:layout_marginLeft="39dp"
             android:src="@drawable/back"
             android:contentDescription="back_button" />

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bayangan -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#CC979797" /> <!-- Warna bayangan dengan transparansi -->
+            <size
+                android:width="120dp"
+                android:height="120dp" />
+        </shape>
+    </item>
+
+    <!-- Lingkaran utama -->
+    <item android:bottom="4dp" android:right="3dp"> <!-- Offset bayangan -->
+        <shape android:shape="oval">
+            <solid android:color="#D0D0D0" /> <!-- Warna pink -->
+            <size
+                android:width="69dp"
+                android:height="54dp" />
+        </shape>
+    </item>
+
+</layer-list>
+

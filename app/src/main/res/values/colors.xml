@@ -9,4 +9,7 @@
     <color name="green">#A2DDC2</color>
     <color name="blue">#BAE3FF</color>
     <color name="yellow">#FFE3C1</color>
+
+    <color name="correct_green">#A2DDC2</color>
+    <color name="incorrect_red">#FF1E00</color>
 </resources>

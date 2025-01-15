@@ -34,6 +34,12 @@ class SplashFragment3 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonMulai.setOnClickListener {
+            val intent = Intent(requireContext(), PreLoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
     }
 
     override fun onDestroyView() {

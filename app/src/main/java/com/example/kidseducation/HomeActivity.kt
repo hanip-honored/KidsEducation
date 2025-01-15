@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.kidseducation.databinding.ActivityHomeBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.shape.CornerFamily
@@ -27,7 +28,9 @@ import com.google.firebase.auth.auth
 class HomeActivity : AppCompatActivity() {
     private  lateinit var firebaseUser: FirebaseUser
 
-    private fun replaceFragment(fragment: Fragment, bundle: Bundle){
+    private lateinit var binding: ActivityHomeBinding
+
+    private fun replaceFragment(fragment: Fragment, bundle: Bundle) {
         fragment.arguments = bundle
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -40,31 +43,38 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val idUser = intent.getStringExtra("ID_USER")
-        val username = intent.getStringExtra("USERNAME")
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val bundle = Bundle()
-        bundle.putString("ID_USER", idUser)
-        bundle.putString("USERNAME", username)
+        val sharedPreferences = getSharedPreferences("USER_SESSION", MODE_PRIVATE)
+        val idUser = sharedPreferences.getString("ID_USER", "Unknown")
+        val username = sharedPreferences.getString("USERNAME", "Unknown")
+        val level = sharedPreferences.getInt("LEVEL", 1)
 
-        // Menampilkan fragmen awal
+        val bundle = Bundle().apply {
+            putString("ID_USER", idUser)
+            putString("USERNAME", username)
+            putString("LEVEL", level.toString())
+        }
+
         replaceFragment(HomeFragment(), bundle)
 
-        // Menangani klik pada menu navigasi
-        findViewById<TextView>(R.id.txtMenuHome).setOnClickListener {
-            replaceFragment(HomeFragment(), bundle)
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            val fragment: Fragment = when (item.itemId) {
+                R.id.home -> HomeFragment()
+                R.id.book -> CollectionFragment()
+                R.id.timer -> ProgressFragment()
+                R.id.user -> ProfileFragment()
+                else -> return@setOnNavigationItemSelectedListener false
+            }
+            replaceFragment(fragment, bundle)
+            true
         }
 
-        findViewById<TextView>(R.id.txtMenuBook).setOnClickListener {
-            replaceFragment(CollectionFragment(), bundle)
-        }
-
-        findViewById<TextView>(R.id.txtMenuTimer).setOnClickListener {
-            replaceFragment(ProgressFragment(), bundle)
-        }
-
-        findViewById<TextView>(R.id.txtMenuUser).setOnClickListener {
-            replaceFragment(ProfileFragment(), bundle)
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            intent.putExtra("ID_USER", idUser)
+            startActivity(intent)
         }
 
         // Menangani klik pada tombol scan

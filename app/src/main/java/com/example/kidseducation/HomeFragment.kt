@@ -1,5 +1,6 @@
 package com.example.kidseducation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,19 +34,30 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
 
     private val listQuiz = ArrayList<QuizCategoryResponse>()
-    private val listProgress = ArrayList<QuizProgressResponse>()
+
+    private fun getDeviceUptimeMillis(): Long {
+        return android.os.SystemClock.elapsedRealtime()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showWelcomePopup()
-
+        val idUser = arguments?.getString("ID_USER")
         val txtWelcome: TextView = view.findViewById(R.id.textWelcome)
         val username = arguments?.getString("USERNAME")
         txtWelcome.text = "Hallo, $username"
 
         val RVQuiz: RecyclerView = view.findViewById(R.id.recyclerViewQuiz)
         RVQuiz.layoutManager = GridLayoutManager(activity, 4)
+
+
+        val sharedPreferences = requireActivity().getSharedPreferences("PREFS", 0)
+        val lastShownTime = sharedPreferences.getLong("POPUP_LAST_SHOWN", 0)
+        val currentTime = System.currentTimeMillis()
+
+        if (lastShownTime == 0L || currentTime - lastShownTime > getDeviceUptimeMillis()) {
+            showWelcomePopup()
+        }
 
         RetrofitClient.instance.getQuizCategory().enqueue(
             object : Callback<ArrayList<QuizCategoryResponse>> {
@@ -59,7 +71,15 @@ class HomeFragment : Fragment() {
                         listQuiz.addAll(it)
                     }
                 }
-                    var adapter = AdapterQuizCategory(listQuiz)
+                    val adapter = AdapterQuizCategory(listQuiz, object :
+                        AdapterQuizCategory.OnQuizCategoryClickListener {
+                        override fun onCategoryClick(idKategori: String) {
+                            val intent = Intent(activity, ProgressActivity::class.java)
+                            intent.putExtra("id_kategori", idKategori)
+                            intent.putExtra("id_user", idUser)
+                            startActivity(intent)
+                        }
+                    })
                     RVQuiz.adapter = adapter
                 }
 
@@ -73,7 +93,6 @@ class HomeFragment : Fragment() {
         val RVProgress: RecyclerView = view.findViewById(R.id.recyclerViewProgress)
         RVProgress.layoutManager = GridLayoutManager(activity, 1)
 
-        val idUser = arguments?.getString("ID_USER")
         if (idUser != null) {
             RetrofitClient.instance.getQuizProgress(idUser).enqueue(
                 object : Callback<ArrayList<QuizProgressResponse>> {
@@ -101,30 +120,33 @@ class HomeFragment : Fragment() {
                 }
             )
         }
-
     }
 
     private fun showWelcomePopup() {
-        val dialog = android.app.Dialog(requireContext())
+        val dialog = android.app.Dialog(activity ?: return)
         dialog.setContentView(R.layout.welcome_popup)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent) // Buat background dialog transparan
         dialog.setCancelable(false)
 
         val window = dialog.window
         window?.setLayout(
-            (resources.displayMetrics.widthPixels * 0.9).toInt(),  // 90% dari lebar layar
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        window?.setBackgroundDrawableResource(android.R.color.transparent) // Menghilangkan background putih default
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val closeButton: Button = dialog.findViewById(R.id.close_button)
 
         closeButton.setOnClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("PREFS", 0)
+            sharedPreferences.edit()
+                .putLong("POPUP_LAST_SHOWN", System.currentTimeMillis())
+                .apply()
             dialog.dismiss()
         }
 
         dialog.show()
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

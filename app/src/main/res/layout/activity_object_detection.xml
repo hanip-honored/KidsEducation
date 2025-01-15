@@ -1,32 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#B6EFE8"
     tools:context=".ObjectDetectionActivity">
 
-    <Button
-        android:id="@+id/button_camera"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Use Camera"
-        android:layout_marginHorizontal="16dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/circle_back"
+            android:layout_width="40dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="11.5dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/circle_back"
+            android:contentDescription="back_button" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginLeft="29dp"
+            android:src="@drawable/back"
+            android:contentDescription="back_button" />
+    </RelativeLayout>
+
+    <!-- Header Image -->
+    <ImageView
+        android:id="@+id/header_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/gambar_pre_login"
+        android:contentDescription="Object Detection Icon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        app:layout_constraintBottom_toTopOf="@id/instruction_text" />
+
+    <!-- Instruction Text -->
+    <TextView
+        android:id="@+id/instruction_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Choose an image from the gallery to detect objects"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/header_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/button_gallery"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Choose from Gallery"
+        android:text="Pilih gambar"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/button_camera"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/instruction_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

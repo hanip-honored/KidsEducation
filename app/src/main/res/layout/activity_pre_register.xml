@@ -53,14 +53,14 @@
         android:paddingLeft="20dp"
         android:textColor="#AAAAAA"
         android:inputType="text"
-        android:text="Masukkan nama"
+        android:hint="Masukkan nama"
         android:gravity="center_vertical"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape" />
 
     <!-- Button Masuk -->
     <Button
-        android:id="@+id/buttonMasuk"
+        android:id="@+id/buttonNext"
         android:layout_width="328dp"
         android:layout_height="55dp"
         android:backgroundTint="#FF8736"

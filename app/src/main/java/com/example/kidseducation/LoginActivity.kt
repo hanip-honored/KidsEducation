@@ -1,6 +1,7 @@
 package com.example.kidseducation
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -58,17 +59,19 @@ class LoginActivity : AppCompatActivity() {
                         if (account?.success == true) {
                             val idUser = account?.data?.id_user
                             val username = account?.data?.nickname
-                            if (idUser != null) {
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    account?.message.toString(),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
-                                intentLogin.putExtra("ID_USER", idUser)
-                                intentLogin.putExtra("USERNAME", username)
-                                startActivity(intentLogin)
+                            val level = account?.data?.level
+
+                            if (idUser != null && username != null) {
+                                val levelInt = level?.toIntOrNull() ?: 1
+                                saveUserSession(idUser, username, levelInt)
                             }
+
+                            val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
+                            intentLogin.putExtra("ID_USER", idUser)
+                            intentLogin.putExtra("USERNAME", username)
+                            intentLogin.putExtra("LEVEL", level)
+                            startActivity(intentLogin)
+                            finish()
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,
@@ -84,6 +87,15 @@ class LoginActivity : AppCompatActivity() {
                 }
             )
         }
+    }
+
+    private fun saveUserSession(idUser: String, username: String, level: Int) {
+        val sharedPreferences = getSharedPreferences("USER_SESSION", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("ID_USER", idUser)
+        editor.putString("USERNAME", username)
+        editor.putInt("LEVEL", level)
+        editor.apply()
     }
 }
 

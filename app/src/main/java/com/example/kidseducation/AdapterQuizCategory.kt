@@ -10,7 +10,11 @@ import com.example.kidseducation.client.RetrofitClient
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
 import com.squareup.picasso.Picasso
 
-class AdapterQuizCategory(private val listQuiz:ArrayList<QuizCategoryResponse>): RecyclerView.Adapter<AdapterQuizCategory.ViewHolder>() {
+class AdapterQuizCategory(private val listQuiz:ArrayList<QuizCategoryResponse>, private val listener: OnQuizCategoryClickListener): RecyclerView.Adapter<AdapterQuizCategory.ViewHolder>() {
+
+    interface OnQuizCategoryClickListener {
+        fun onCategoryClick(idKategori: String)
+    }
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val imgQuiz: ImageView = v.findViewById(R.id.imageCategory)
@@ -25,6 +29,10 @@ class AdapterQuizCategory(private val listQuiz:ArrayList<QuizCategoryResponse>):
             val colors = listOf("#FECAC3", "#A2DDC2", "#FF8A00", "#FFE3C1", "#BAE3FF", "#E7E1FF")
             val color = android.graphics.Color.parseColor(colors[position % colors.size])
             cardCategory.setCardBackgroundColor(color)
+
+            itemView.setOnClickListener {
+                listener.onCategoryClick(response.id_kategori)
+            }
         }
     }
 

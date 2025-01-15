@@ -1,11 +1,17 @@
 package com.example.kidseducation.client
 
 import com.example.kidseducation.response.account.LoginResponse
+import com.example.kidseducation.response.account.RegisterRequest
+import com.example.kidseducation.response.account.RegisterResponse
 import com.example.kidseducation.response.collection.CollectionCategoryResponse
+import com.example.kidseducation.response.data.QuizQuestionResponse
+import com.example.kidseducation.response.data.UserAnswerResponse
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
 import com.example.kidseducation.response.quizcategory.QuizProgressResponse
+import com.example.kidseducation.response.user.AnswerRequest
 import com.example.kidseducation.response.user.UserQuizResponse
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -13,6 +19,24 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
+    @GET("UserAnswer")
+    fun getUserAnswer(
+        @Query("id_user") idUser: String,
+        @Query("id_kategori") idKategori: String
+    ): Call<List<UserAnswerResponse>>
+
+    @POST("submitAnswer")
+    fun postAnswer(@Body answerRequest: AnswerRequest): Call<Void>
+
+    @GET("QuizQuestion")
+    fun getQuizQuestion(
+        @Query("id_kategori") idKategori: String,
+        @Query("id_pertanyaan") idQuiz: Int
+    ): Call<ArrayList<QuizQuestionResponse>>
+
+    @POST("RegisterAccount")
+    fun registerUser(@Body request: RegisterRequest): Call<RegisterResponse>
+
     @GET("UserQuiz")
     fun getUserQuiz(
         @Query("id_kategori") idKategori: String,

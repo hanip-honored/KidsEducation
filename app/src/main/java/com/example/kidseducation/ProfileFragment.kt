@@ -1,10 +1,16 @@
 package com.example.kidseducation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +26,37 @@ class ProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val idUser = arguments?.getString("ID_USER")
+        val username = arguments?.getString("USERNAME")
+        val level = arguments?.getString("LEVEL") ?: "0"
+
+        val txtName: TextView = view.findViewById(R.id.textName)
+        txtName.text = username
+
+        val txtLevel: TextView = view.findViewById(R.id.textLevel)
+        txtLevel.text = "Level ${level}"
+
+        val progressLevel: ProgressBar = view.findViewById(R.id.progressBarLevel)
+        progressLevel.progress = level.toInt() * 10
+
+        val btnLogout: Button = view.findViewById(R.id.buttonLogout)
+
+        btnLogout.setOnClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("USER_SESSION", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.clear()
+            editor.apply()
+
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

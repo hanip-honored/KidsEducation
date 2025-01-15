@@ -81,7 +81,7 @@
 
     <!-- Button Masuk -->
     <Button
-        android:id="@+id/buttonMasuk"
+        android:id="@+id/buttonRegister"
         android:layout_width="328dp"
         android:layout_height="55dp"
         android:backgroundTint="#FF8736"

@@ -14,19 +14,16 @@ class PreLoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_login)
 
-        // Inisialisasi tombol
         buttonMasuk = findViewById(R.id.buttonMasuk)
         buttonDaftar = findViewById(R.id.buttonDaftar)
 
-        // Event klik tombol Masuk
         buttonMasuk.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        // Event klik tombol Daftar
         buttonDaftar.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, PreRegisterActivity::class.java)
             startActivity(intent)
         }
     }

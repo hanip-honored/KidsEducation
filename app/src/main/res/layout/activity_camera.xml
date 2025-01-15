@@ -1,16 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CameraActivity">
 
+    <!-- Preview Kamera -->
     <androidx.camera.view.PreviewView
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Tombol Close -->
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_close"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Close" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Switch AR dan Object -->
+    <LinearLayout
+        android:id="@+id/switch_container"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:background="@drawable/switch_background"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/text_ar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CAM"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"
+            android:textColor="@color/blue"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/text_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Image"
+            android:textSize="16sp"
+            android:textColor="#BEBEBE"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Tombol Capture -->
+    <ImageButton
+        android:id="@+id/button_capture"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="Capture"
+        android:background="@drawable/capture_button_background"/>
+</RelativeLayout>

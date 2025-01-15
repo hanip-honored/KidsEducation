@@ -20,46 +20,71 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.kidseducation.client.RetrofitClient
+import com.example.kidseducation.response.account.RegisterRequest
+import com.example.kidseducation.response.account.RegisterResponse
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.userProfileChangeRequest
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
 //    private lateinit var auth: FirebaseAuth
 //    private  lateinit var progressDialog: ProgressDialog
 //
 //
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContentView(R.layout.activity_register)
-//
-//        val btnLogin = findViewById<TextView>(R.id.haveAccount)
-//        val btnRegister = findViewById<Button>(R.id.registerButton)
-//        val nama = findViewById<EditText>(R.id.name)
-//        val email = findViewById<EditText>(R.id.email)
-//        val password = findViewById<EditText>(R.id.password)
-//        val passwordConfirmation = findViewById<EditText>(R.id.passwordConfirmation)
-//
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_register)
+
+        val nickname = intent.getStringExtra("NICKNAME")
+        val btnRegister = findViewById<Button>(R.id.buttonRegister)
+        val email = findViewById<EditText>(R.id.TextEmail)
+        val password = findViewById<EditText>(R.id.TextPassword)
+
 //        auth = FirebaseAuth.getInstance()
 //        progressDialog = ProgressDialog(this)
 //        progressDialog.setTitle("Loading")
 //        progressDialog.setMessage("Silahkan Tunggu")
 //        progressDialog.setCancelable(false)
-//
-//
-//        btnRegister.setOnClickListener {
-//            if (nama.text.length > 0 && email.text.length > 0 && password.text.length > 0 && passwordConfirmation.text.length > 0) {
-//                if (password.text.toString().equals(passwordConfirmation.text.toString())){
-//                    register(nama.text.toString(), email.text.toString(), password.text.toString())
-//                } else {
-//                    Toast.makeText(applicationContext, "Silahkan isi password yang sama!", Toast.LENGTH_SHORT).show()
-//                }
-//            } else {
-//                Toast.makeText(applicationContext, "Silahkan isi semua data!", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+
+
+    btnRegister.setOnClickListener {
+        val nicknameText = nickname ?: ""
+        val emailText = email.text.toString().trim()
+        val passwordText = password.text.toString().trim()
+
+        if (emailText.isNotEmpty() && passwordText.isNotEmpty()) {
+            val request = RegisterRequest(nicknameText, emailText, passwordText)
+
+            RetrofitClient.instance.registerUser(request).enqueue(object : Callback<RegisterResponse> {
+                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                    if (response.isSuccessful && response.body()?.success == true) {
+                        Toast.makeText(applicationContext, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()
+
+                        val intentLogin = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        startActivity(intentLogin)
+                        finish()
+                    } else {
+                        Toast.makeText(applicationContext, "Registrasi gagal: ${response.body()?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    Toast.makeText(applicationContext, "Terjadi kesalahan: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            Toast.makeText(applicationContext, "Silahkan isi semua data!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+}
 //
 //
 //        val textLogin = "Sudah memiliki akun? Login"
@@ -112,7 +137,7 @@ class RegisterActivity : AppCompatActivity() {
 //                    "Authentication failed.",
 //                    Toast.LENGTH_SHORT,
 //                ).show()
-////                updateUI(null)i
+//                updateUI(null)i
 //            }
 //        }
 //    }

@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -13,8 +12,6 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
-        android:usesCleartextTraffic="true"
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,10 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KidsEducation"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".ObjectDetectionActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ProgressActivity"
+            android:exported="false" />
+         <activity
+         android:name=".ObjectDetectionActivity"
+         android:exported="false" />
         <activity
             android:name=".ObjectDetailActivity"
             android:exported="false" />
@@ -36,9 +37,9 @@
         <activity
             android:name=".SplashPagerAdapter"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".LoginActivity"-->
-<!--            android:exported="false" />-->
+         <activity
+         android:name=".LoginActivity"
+         android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -49,7 +50,19 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".KuisActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".KuisReviewActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".PreLoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".PreRegisterActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -31,6 +31,15 @@ class AdapterCollectionCategory(private val listCollection:ArrayList<CollectionC
             val color = android.graphics.Color.parseColor(colors[position % colors.size])
             val background = cardCollection.background as GradientDrawable
             background.setColor(color)
+
+            val colorsNumber = listOf("#F9A89D", "#53E4D3", "#FAC380", "#7BC1F0", "#34D58B", "#B9ABF0")
+            val numberColor = android.graphics.Color.parseColor(colorsNumber[position % colorsNumber.size])
+
+            val drawable = GradientDrawable()
+            drawable.shape = GradientDrawable.OVAL
+            drawable.setColor(numberColor)
+            drawable.setSize(100, 100)
+            txtNumber.background = drawable
         }
     }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageViewPreLogin"
+        android:layout_width="304dp"
+        android:layout_height="398dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/congrats"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Yeayyy" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Dapet ilmu baru deh!!" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="358dp"
+        android:layout_height="64dp"
+        android:backgroundTint="#382935"
+        android:text="Scan Lagi"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginTop="120dp"/>
+</LinearLayout>
+

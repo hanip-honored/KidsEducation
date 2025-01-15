@@ -23,11 +23,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".CongratulationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProgressActivity"
             android:exported="false" />
-         <activity
-         android:name=".ObjectDetectionActivity"
-         android:exported="false" />
+        <activity
+            android:name=".ObjectDetectionActivity"
+            android:exported="false" />
         <activity
             android:name=".ObjectDetailActivity"
             android:exported="false" />
@@ -37,9 +40,9 @@
         <activity
             android:name=".SplashPagerAdapter"
             android:exported="false" />
-         <activity
-         android:name=".LoginActivity"
-         android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -51,16 +54,16 @@
             android:exported="false" />
         <activity
             android:name=".KuisActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".KuisReviewActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".PreLoginActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".PreRegisterActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

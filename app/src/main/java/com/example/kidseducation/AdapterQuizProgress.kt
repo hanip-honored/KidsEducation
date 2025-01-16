@@ -69,6 +69,4 @@ class AdapterQuizProgress(private val listProgress:ArrayList<QuizProgressRespons
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listProgress[position], position)
     }
-
-
 }

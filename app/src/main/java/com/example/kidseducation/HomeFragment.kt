@@ -123,7 +123,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showWelcomePopup() {
-        val dialog = android.app.Dialog(activity ?: return)
+        val dialog = android.app.Dialog(requireContext())
         dialog.setContentView(R.layout.welcome_popup)
         dialog.setCancelable(false)
 

@@ -1,28 +1,63 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/object_image"
+    <!-- Orange Header with Object Image -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop" />
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/orange">
 
+        <ImageView
+            android:id="@+id/object_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Object Image" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Object Name -->
     <TextView
         android:id="@+id/object_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Object Name"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:textColor="#382935" />
 
     <TextView
         android:id="@+id/object_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="This is the description of the object."
         android:textSize="16sp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selanjutnya"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:backgroundTint="#382935"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="8dp"
+        android:textStyle="bold" />
+
 </LinearLayout>

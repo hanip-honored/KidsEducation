@@ -1,5 +1,7 @@
 package com.example.kidseducation
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +14,7 @@ import com.example.kidseducation.client.RetrofitClient
 import com.example.kidseducation.response.collection.CollectionCategoryResponse
 import com.squareup.picasso.Picasso
 
-class AdapterCollectionCategory(private val listCollection:ArrayList<CollectionCategoryResponse>): RecyclerView.Adapter<AdapterCollectionCategory.ViewHolder>() {
+class AdapterCollectionCategory(private val listCollection:ArrayList<CollectionCategoryResponse>,  private val context: Context): RecyclerView.Adapter<AdapterCollectionCategory.ViewHolder>() {
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val txtNumber: TextView = v.findViewById(R.id.textNumber)
@@ -40,6 +42,12 @@ class AdapterCollectionCategory(private val listCollection:ArrayList<CollectionC
             drawable.setColor(numberColor)
             drawable.setSize(100, 100)
             txtNumber.background = drawable
+
+            cardCollection.setOnClickListener {
+                val intent = Intent(context, CollectionListActivity::class.java)
+                intent.putExtra("id_kategori_objek", response.id_kategori_objek)
+                context.startActivity(intent)
+            }
         }
     }
 

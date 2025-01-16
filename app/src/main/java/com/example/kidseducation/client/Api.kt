@@ -4,6 +4,8 @@ import com.example.kidseducation.response.account.LoginResponse
 import com.example.kidseducation.response.account.RegisterRequest
 import com.example.kidseducation.response.account.RegisterResponse
 import com.example.kidseducation.response.collection.CollectionCategoryResponse
+import com.example.kidseducation.response.collection.SaveResponse
+import com.example.kidseducation.response.collection.UserCollectionResponse
 import com.example.kidseducation.response.data.QuizQuestionResponse
 import com.example.kidseducation.response.data.UserAnswerResponse
 import com.example.kidseducation.response.quizcategory.QuizCategoryResponse
@@ -19,6 +21,21 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Api {
+    @POST("SaveObject")
+    @FormUrlEncoded
+    fun saveObject(
+        @Field("id_user") idUser: String,
+        @Field("object_name") objectName: String,
+        @Field("object_description") objectDescription: String,
+        @Field("object_image_url") imageUrl: String
+    ): Call<SaveResponse>
+
+    @GET("UserCollection")
+    fun getUserCollection(
+        @Query("id_user") idUser: String,
+        @Query("id_kategori") idKategoriObjek: String
+    ): Call<ArrayList<UserCollectionResponse>>
+
     @GET("UserAnswer")
     fun getUserAnswer(
         @Query("id_user") idUser: String,

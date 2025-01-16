@@ -36,14 +36,12 @@ class CameraActivity : AppCompatActivity() {
 
         previewView = findViewById(R.id.camera_preview)
 
-        // Tombol untuk membuka galeri
         val textImage: TextView = findViewById(R.id.text_image)
         textImage.setOnClickListener {
             val intentKuis = Intent(this, ObjectDetectionActivity::class.java)
             startActivity(intentKuis)
         }
 
-        // Tombol close
         val btnClose: ImageButton = findViewById(R.id.button_close)
         btnClose.setOnClickListener {
             val intentKuis = Intent(this, HomeActivity::class.java)
@@ -153,7 +151,6 @@ class CameraActivity : AppCompatActivity() {
                 Toast.makeText(this, "Detection failed", Toast.LENGTH_SHORT).show()
             }
     }
-
 
     private fun navigateToDetail(objectName: String, description: String, imageUrl: String?) {
         val intent = Intent(this, ObjectDetailActivity::class.java)

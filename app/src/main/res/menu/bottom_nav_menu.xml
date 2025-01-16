@@ -10,7 +10,7 @@
     <item
         android:id="@+id/book"
         android:icon="@drawable/book_hitam"
-        android:title="Book" />
+        android:title="Koleksi" />
 
     <!-- Blank -->
     <item
@@ -21,7 +21,7 @@
     <item
         android:id="@+id/timer"
         android:icon="@drawable/timer_hitam"
-        android:title="Timer" />
+        android:title="Progress" />
 
     <!-- Profile -->
     <item

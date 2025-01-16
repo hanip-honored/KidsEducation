@@ -60,15 +60,21 @@ class KuisActivity : AppCompatActivity() {
         idQuiz = intent.getIntExtra("level", 1)
 
         back.setOnClickListener {
-            val intentKuis = Intent(this, ProgressActivity::class.java)
+            val intentKuis = Intent(this, ProgressActivity::class.java).apply {
+                putExtra("id_user", idUser)
+                putExtra("id_kategori", idKategori)
+            }
             startActivity(intentKuis)
+            finish()
         }
 
         loadQuiz()
     }
 
     private fun loadQuiz() {
-        RetrofitClient.instance.getQuizQuestion(idKategori, idQuiz).enqueue(
+        val idKategoriNumber = idKategori.replace("KP", "").toInt()
+        val idQuizGlobal = ((idQuiz - 1) + (idKategoriNumber - 1) * 10) + 1
+        RetrofitClient.instance.getQuizQuestion(idKategori, idQuizGlobal).enqueue(
             object : Callback<ArrayList<QuizQuestionResponse>> {
                 override fun onResponse(
                     call: Call<ArrayList<QuizQuestionResponse>>,
@@ -101,12 +107,6 @@ class KuisActivity : AppCompatActivity() {
                                     jawaban1Button.text = jawabanSalah
                                     jawaban2Button.text = jawabanBenar
                                 }
-
-//                                if (jawaban1Button.text.length > 8 || jawaban2Button.text.length > 8) {
-//                                    container.orientation = LinearLayout.VERTICAL
-//                                } else {
-//                                    container.orientation = LinearLayout.HORIZONTAL
-//                                }
 
                                 jawaban1Button.setOnClickListener { handleAnswer(jawaban1Button.text.toString()) }
                                 jawaban2Button.setOnClickListener { handleAnswer(jawaban2Button.text.toString()) }

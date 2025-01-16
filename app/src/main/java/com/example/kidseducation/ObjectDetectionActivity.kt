@@ -12,6 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.kidseducation.client.RetrofitClient
+import com.example.kidseducation.response.collection.SaveResponse
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.objects.ObjectDetection
 import com.google.mlkit.vision.objects.defaults.ObjectDetectorOptions
@@ -20,7 +22,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -31,12 +36,14 @@ class ObjectDetectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_object_detection)
 
+        val sharedPreferences = getSharedPreferences("USER_SESSION", MODE_PRIVATE)
+        val idUser = sharedPreferences.getString("ID_USER", null)
+
         val buttonGallery = findViewById<Button>(R.id.button_gallery)
         val back = findViewById<ImageView>(R.id.circle_back)
 
-        // Pilih gambar dari galeri
         buttonGallery.setOnClickListener {
-            openGallery()
+            openGallery(idUser)
         }
 
         back.setOnClickListener {
@@ -57,7 +64,7 @@ class ObjectDetectionActivity : AppCompatActivity() {
         }
     }
 
-    private fun openGallery() {
+    private fun openGallery(idUser: String?) {
         galleryLauncher.launch("image/*")
     }
 
@@ -76,7 +83,7 @@ class ObjectDetectionActivity : AppCompatActivity() {
             .addOnSuccessListener { detectedObjects ->
                 if (detectedObjects.isNotEmpty()) {
                     val label = detectedObjects.first().labels.firstOrNull()?.text ?: "Unknown"
-                    fetchWikipediaDescription(label) // Panggil Wikipedia API setelah deteksi berhasil
+                    fetchWikipediaDescription(label)
                 } else {
                     Toast.makeText(this, "No object detected", Toast.LENGTH_SHORT).show()
                 }
@@ -87,7 +94,6 @@ class ObjectDetectionActivity : AppCompatActivity() {
     }
 
     private fun fetchWikipediaDescription(objectName: String) {
-        // Inisialisasi Retrofit untuk memanggil Wikipedia API
         val retrofit = Retrofit.Builder()
             .baseUrl("https://en.wikipedia.org/api/rest_v1/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -106,7 +112,14 @@ class ObjectDetectionActivity : AppCompatActivity() {
                     val description = result?.extract ?: "Description not available"
                     val imageUrl = result?.thumbnail?.source
 
-                    navigateToDetail(objectName, description, imageUrl)
+                    val sharedPreferences = getSharedPreferences("USER_SESSION", MODE_PRIVATE)
+                    val idUser = sharedPreferences.getString("ID_USER", null)
+
+                    if (idUser != null) {
+                        navigateToDetail(idUser, objectName, description, imageUrl)
+                    } else {
+                        Toast.makeText(this@ObjectDetectionActivity, "User ID not found.", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(this@ObjectDetectionActivity, "No information found", Toast.LENGTH_SHORT).show()
                 }
@@ -118,7 +131,11 @@ class ObjectDetectionActivity : AppCompatActivity() {
         })
     }
 
-    private fun navigateToDetail(objectName: String, description: String, imageUrl: String?) {
+    private fun navigateToDetail(idUser: String, objectName: String, description: String, imageUrl: String?) {
+        if (imageUrl != null) {
+            saveToDatabase(idUser, objectName, description, imageUrl)
+        }
+
         val intent = Intent(this, ObjectDetailActivity::class.java)
         intent.putExtra("object_name", objectName)
         intent.putExtra("object_description", description)
@@ -126,13 +143,34 @@ class ObjectDetectionActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // Interface untuk Wikipedia API
+    private fun saveToDatabase(idUser: String, objectName: String, description: String, imageUrl: String) {
+        RetrofitClient.instance.saveObject(idUser, objectName, description, imageUrl)
+            .enqueue(object : Callback<SaveResponse> {
+                override fun onResponse(call: Call<SaveResponse>, response: Response<SaveResponse>) {
+                    if (response.isSuccessful) {
+                        val result = response.body()
+                        if (result?.success == true) {
+                            Toast.makeText(this@ObjectDetectionActivity, "Data saved successfully!", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@ObjectDetectionActivity, "Failed to save data: ${result?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@ObjectDetectionActivity, "Failed to save data", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<SaveResponse>, t: Throwable) {
+                    Log.e("ObjectDetectionActivity", "Error: ${t.message}")
+                    Toast.makeText(this@ObjectDetectionActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
     interface WikipediaApiService {
         @GET("page/summary/{title}")
         fun getObjectInfo(@Path("title") title: String): Call<WikipediaResponse>
     }
 
-    // Model untuk response Wikipedia
     data class WikipediaResponse(
         val title: String,
         val extract: String,

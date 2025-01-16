@@ -69,7 +69,7 @@ class CollectionFragment : Fragment() {
 
                     val listCollection = response.body() ?: arrayListOf()
 
-                    var adapter = AdapterCollectionCategory(listCollection)
+                    var adapter = AdapterCollectionCategory(listCollection, requireContext())
                     RVKoleksi.adapter = adapter
                 }
 

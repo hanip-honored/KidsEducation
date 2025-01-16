@@ -27,7 +27,8 @@ interface Api {
         @Field("id_user") idUser: String,
         @Field("object_name") objectName: String,
         @Field("object_description") objectDescription: String,
-        @Field("object_image_url") imageUrl: String
+        @Field("object_image_url") imageUrl: String,
+        @Field("id_kategori") categoryId: Int
     ): Call<SaveResponse>
 
     @GET("UserCollection")

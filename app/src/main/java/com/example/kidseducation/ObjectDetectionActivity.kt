@@ -31,15 +31,6 @@ import retrofit2.http.Query
 
 class ObjectDetectionActivity : AppCompatActivity() {
 
-    private val categoryMapping = mapOf(
-        "Hewan" to 1,
-        "Buah" to 2,
-        "Tumbuhan" to 3,
-        "Kendaraan" to 4,
-        "Serangga" to 5,
-        "Peralatan" to 6
-    )
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,15 +83,7 @@ class ObjectDetectionActivity : AppCompatActivity() {
             .addOnSuccessListener { detectedObjects ->
                 if (detectedObjects.isNotEmpty()) {
                     val label = detectedObjects.first().labels.firstOrNull()?.text ?: "Unknown"
-
-                    // Logika fallback
-                    val categoryId = categoryMapping[label] ?: 0 // Fallback ke kategori ID 0 jika label tidak ditemukan
-
-                    if (categoryId == 0) {
-                        Toast.makeText(this, "Kategori tidak ditemukan untuk label: $label", Toast.LENGTH_SHORT).show()
-                    } else {
-                        fetchWikipediaDescription(label, categoryId)
-                    }
+                    fetchWikipediaDescription(label)
                 } else {
                     Toast.makeText(this, "No object detected", Toast.LENGTH_SHORT).show()
                 }
@@ -110,7 +93,7 @@ class ObjectDetectionActivity : AppCompatActivity() {
             }
     }
 
-    private fun fetchWikipediaDescription(objectName: String, categoryId: Int) {
+    private fun fetchWikipediaDescription(objectName: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://en.wikipedia.org/api/rest_v1/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -133,7 +116,7 @@ class ObjectDetectionActivity : AppCompatActivity() {
                     val idUser = sharedPreferences.getString("ID_USER", null)
 
                     if (idUser != null) {
-                        navigateToDetail(idUser, objectName, description, imageUrl, categoryId)
+                        navigateToDetail(idUser, objectName, description, imageUrl)
                     } else {
                         Toast.makeText(this@ObjectDetectionActivity, "User ID not found.", Toast.LENGTH_SHORT).show()
                     }
@@ -148,21 +131,20 @@ class ObjectDetectionActivity : AppCompatActivity() {
         })
     }
 
-    private fun navigateToDetail(idUser: String, objectName: String, description: String, imageUrl: String?, categoryId: Int) {
+    private fun navigateToDetail(idUser: String, objectName: String, description: String, imageUrl: String?) {
         if (imageUrl != null) {
-            saveToDatabase(idUser, objectName, description, imageUrl, categoryId)
+            saveToDatabase(idUser, objectName, description, imageUrl)
         }
 
         val intent = Intent(this, ObjectDetailActivity::class.java)
         intent.putExtra("object_name", objectName)
         intent.putExtra("object_description", description)
         intent.putExtra("object_image_url", imageUrl ?: "https://via.placeholder.com/150")
-        intent.putExtra("category_id", categoryId)
         startActivity(intent)
     }
 
-    private fun saveToDatabase(idUser: String, objectName: String, description: String, imageUrl: String, categoryId: Int) {
-        RetrofitClient.instance.saveObject(idUser, objectName, description, imageUrl, categoryId)
+    private fun saveToDatabase(idUser: String, objectName: String, description: String, imageUrl: String) {
+        RetrofitClient.instance.saveObject(idUser, objectName, description, imageUrl)
             .enqueue(object : Callback<SaveResponse> {
                 override fun onResponse(call: Call<SaveResponse>, response: Response<SaveResponse>) {
                     if (response.isSuccessful) {
